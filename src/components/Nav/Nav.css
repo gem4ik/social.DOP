@@ -1,0 +1,7 @@
+.nav {
+    grid-area: n;
+    padding: 10px;
+    font-family: sans-serif;
+    line-height: 25px;
+    height: auto;
+}
