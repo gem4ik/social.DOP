@@ -8,8 +8,13 @@ import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {Profile} from "./components/Profile/Profile";
+import {StoreType} from "./components/Data/Store";
 
-function App() {
+type AppPropsType ={
+    data:StoreType
+}
+
+function App(props:AppPropsType) {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -19,11 +24,11 @@ function App() {
                 </div>
                 <div className="content">
                     <Route path="/profile"
-                           render={() => <Profile/>}>
+                           render={() => <Profile profile={props.data} />}>
                     </Route>
                     <Route
                         path="/dialogs"
-                        render={() => <Dialogs/>}>
+                        render={() => <Dialogs messages={props.data}/>}>
                     </Route>
                     <Route path="/music"
                            render={() => <Music/>}>

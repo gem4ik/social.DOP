@@ -1,9 +1,11 @@
 import "./Dialogs.css"
-export function Dialogs() {
+import {MessageType} from "../Data/Store";
+
+export const Dialogs:Function = (props: MessageType) => {
     return (
         <div>
-            <div>Name</div>
-            <div>Message</div>
+            <div>------</div>
+            <div>---{}---</div>
             <textarea className="textarea"
                       placeholder="your post">
 

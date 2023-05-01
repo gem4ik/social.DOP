@@ -1,29 +1,29 @@
-type Poststype ={
+export type Poststype ={
     id: number
     post:string
     likeValue:number
 }
-type ProfileType = {
-    posts:Poststype
+export type ProfileType = {
+    posts: Array<Poststype>
 }
-type DialogsType= {
+export type DialogsType= {
     id:number
     name:string
 }
-type MessagesType= {
+export type MessagesType= {
     id:number
     message:string
 }
-type MessageType= {
-    dialogs: DialogsType
-    message: MessagesType
+export type MessageType= {
+    dialogs: Array<DialogsType>
+    messages: Array<MessagesType>
 }
 export type StoreType= {
     Profile:ProfileType
     Message:MessageType
 }
 
-export const Store ={
+const Store: StoreType ={
     Profile: {
         posts: [
             { id: 1, post: 'Hello, World', likeValue: 8 },
@@ -51,3 +51,5 @@ export const Store ={
         ]
     }
 }
+
+export default Store
