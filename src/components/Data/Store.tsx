@@ -33,7 +33,7 @@ const Store: StoreType ={
     },
     Message: {
         dialogs: [
-            { id: 1, name: 'Sasha' },
+            { id: 1, name: 'Kseniya' },
             { id: 2, name: 'Gleb' },
             { id: 3, name: 'Vlad' },
             { id: 4, name: 'Misha' },

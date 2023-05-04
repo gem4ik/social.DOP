@@ -1,9 +1,9 @@
-import "./Nav.css"
+import style from "./Nav.module.css"
 import {NavLink} from "react-router-dom";
 
 export function Nav() {
     return (
-        <div className="nav">
+        <div className={style.nav}>
             <div>
                 <NavLink
                     to="/profile"

@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import style from './App.module.css';
 import {Header} from "./components/Header/Header";
 import {Nav} from "./components/Nav/Nav";
 import {BrowserRouter, Route} from "react-router-dom";
@@ -11,24 +11,24 @@ import {Profile} from "./components/Profile/Profile";
 import {StoreType} from "./components/Data/Store";
 
 type AppPropsType ={
-    data:StoreType
+    props:StoreType
 }
 
-function App(props:AppPropsType) {
+function App (props: AppPropsType) {
     return (
         <BrowserRouter>
-            <div className="app-wrapper">
+            <div className={style.appWrapper}>
                 <div >
                     <Header/>
                     <Nav/>
                 </div>
-                <div className="content">
+                <div className={style.content}>
                     <Route path="/profile"
-                           render={() => <Profile profile={props.data} />}>
+                           render={() => <Profile profile={props.props.Profile} />}>
                     </Route>
                     <Route
                         path="/dialogs"
-                        render={() => <Dialogs messages={props.data}/>}>
+                        render={() => <Dialogs message={props.props.Message}/>}>
                     </Route>
                     <Route path="/music"
                            render={() => <Music/>}>

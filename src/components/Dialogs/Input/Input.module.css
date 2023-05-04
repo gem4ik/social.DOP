@@ -1,3 +1,6 @@
+.inputArea {
+    grid-area: t;
+}
 .button {
     background-color: #ff0000;
     border: none;
