@@ -1,10 +1,13 @@
+import {v1} from "uuid";
+
 export type Poststype ={
-    id: number
+    id: string
     post:string
     likeValue:number
 }
 export type ProfileType = {
     posts: Array<Poststype>
+    newPostText: string
 }
 export type DialogsType= {
     id:number
@@ -17,19 +20,33 @@ export type MessagesType= {
 export type MessageType= {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
+    newMessageText: string
 }
-export type StoreType= {
+export type StateType= {
     Profile:ProfileType
     Message:MessageType
 }
+export type StoreType= {
+    _State: StateType
+    addCurrentPostText: (newPostText: string)=>void
+    addPost: ()=>void
+    renderTree: ()=>void
+    subscribe: (callback: ()=>void) => void
+    getState: ()=> StateType
+}
 
-const Store: StoreType ={
+
+
+
+const Store: StoreType = {
+    _State: {
     Profile: {
         posts: [
-            { id: 1, post: 'Hello, World', likeValue: 8 },
-            { id: 2, post: "It's my first post", likeValue: 4 },
-            { id: 3, post: "It's my first post", likeValue: 7 }
-        ]
+            { id: v1(), post: 'Hello, World', likeValue: 8 },
+            { id: v1(), post: "It's my first post", likeValue: 4 },
+            { id: v1(), post: "It's my first post", likeValue: 7 }
+        ],
+        newPostText: ''
     },
     Message: {
         dialogs: [
@@ -40,7 +57,7 @@ const Store: StoreType ={
             { id: 5, name: 'Kostya' },
             { id: 6, name: 'Vova' },
         ],
-            messages: [
+        messages: [
             { id: 1, message: 'I' },
             { id: 2, message: "don't" },
             { id: 3, message: 'even' },
@@ -48,7 +65,28 @@ const Store: StoreType ={
             { id: 5, message: 'who' },
             { id: 6, message: 'i' },
             { id: 7, message: 'am' }
-        ]
+        ],
+        newMessageText: ''
+    }
+},
+    addCurrentPostText(newPostText: string){
+        this._State.Profile.newPostText = newPostText
+        this.renderTree()
+    },
+    addPost() {
+        let newPost = {id: v1(), post: this._State.Profile.newPostText, likeValue: 0}
+        this._State.Profile.posts.push(newPost)
+        this.renderTree()
+        console.log(this._State.Profile.posts)
+    },
+    renderTree(){
+
+    },
+    subscribe( callback){
+        this.renderTree = callback
+    },
+    getState() {
+        return this._State
     }
 }
 

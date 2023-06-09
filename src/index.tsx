@@ -4,8 +4,11 @@ import './index.css';
 import App from './App';
 import Store from "./components/Data/Store";
 
-
-ReactDOM.render(
-    <App props={Store} />,
-  document.getElementById('root')
-);
+export const renderTree =()=> {
+    ReactDOM.render(
+        <App Store={Store}        />,
+        document.getElementById('root')
+    );
+}
+renderTree()
+Store.subscribe(renderTree)

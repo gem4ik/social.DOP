@@ -10,25 +10,30 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import {Profile} from "./components/Profile/Profile";
 import {StoreType} from "./components/Data/Store";
 
-type AppPropsType ={
-    props:StoreType
+type AppPropsType = {
+    Store: StoreType
 }
 
-function App (props: AppPropsType) {
+function App(props: AppPropsType) {
     return (
         <BrowserRouter>
             <div className={style.appWrapper}>
-                <div >
+                <div>
                     <Header/>
                     <Nav/>
                 </div>
                 <div className={style.content}>
                     <Route path="/profile"
-                           render={() => <Profile profile={props.props.Profile} />}>
+                           render={() => <Profile profile={props.Store._State.Profile}
+                                                  addCurrentPostText={props.Store.addCurrentPostText.bind(props.Store)}
+                                                  addPost={props.Store.addPost.bind(props.Store)}
+                           />}>
                     </Route>
                     <Route
                         path="/dialogs"
-                        render={() => <Dialogs message={props.props.Message}/>}>
+                        render={() => <Dialogs
+                            message={props.Store._State.Message}
+                        />}>
                     </Route>
                     <Route path="/music"
                            render={() => <Music/>}>
