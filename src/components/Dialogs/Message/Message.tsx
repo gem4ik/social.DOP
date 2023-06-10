@@ -8,11 +8,23 @@ type DialogsPropsType = {
 export const Message : FC<DialogsPropsType> = (messages) => {
     return (
         <div >
-            <div className={style.messages}>
+            <div>
                 {messages.messages.map((m) => {
-                return <div>{m.message}</div>
+                return <div className={style.messageContainer}>
+                    <div className={style.message}>
+                        <div className={style.messageHeader}>
+                            <span className={style.messageSender}>John Doe</span>
+                            <span className={style.messageTime}>12:30 PM</span>
+                        </div>
+                        <div className={style.messageBody}>
+                            {m.message}
+                        </div>
+                    </div>
+                </div>
             })}
             </div>
         </div>
     )
 }
+
+

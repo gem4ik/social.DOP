@@ -11,7 +11,11 @@ export const Names: FC<NamesPropsType> = (dialogs) => {
         <div>
             <div className={style.names}>
                 {dialogs.dialogs.map((n) => {
-                return <div><NavLink to ="/dialogs/*">{n.name}</NavLink></div>
+                return <div key={n.id}>
+                    <NavLink to ="/dialogs/*">
+                        {n.name}
+                    </NavLink>
+                </div>
             })}
             </div>
         </div>

@@ -1,3 +1,22 @@
 .names {
 grid-area: n;
 }
+.names {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.names a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.names a:hover {
+    background-color: rgba(31, 88, 162, 0.35);
+    border-radius: 10px;
+}
