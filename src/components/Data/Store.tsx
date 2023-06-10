@@ -35,9 +35,6 @@ export type StoreType= {
     getState: ()=> StateType
 }
 
-
-
-
 const Store: StoreType = {
     _State: {
     Profile: {

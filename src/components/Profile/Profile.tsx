@@ -1,6 +1,7 @@
 import style from "./Profile.module.css"
 import React, {FC} from "react";
 import {ProfileType} from "../Data/Store";
+import {Posts} from "./Posts/Posts";
 
 type ProfilePropsType = {
     profile: ProfileType
@@ -26,20 +27,7 @@ export const Profile: FC<ProfilePropsType> = (props) => {
                     value={props.profile.newPostText}
                 ></textarea>
                 <button onClick={props.addPost} className={style.button}>add post</button>
-                {props.profile.posts.map((p) => {
-                    return (<div className={style.post}
-                                 key={p.id}
-                        >
-                            <div>
-                                <img src="https://wow.zamimg.com/uploads/screenshots/small/661512.jpg" alt="ava"/>
-                                {p.post}
-                            </div>
-                            <div>{p.likeValue}</div>
-                        </div>
-                    )
-                })}
-
-
+                <Posts profile={props.profile.posts}/>
             </div>
         </div>
     )

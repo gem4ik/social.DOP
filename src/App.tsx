@@ -24,15 +24,16 @@ function App(props: AppPropsType) {
                 </div>
                 <div className={style.content}>
                     <Route path="/profile"
-                           render={() => <Profile profile={props.Store._State.Profile}
-                                                  addCurrentPostText={props.Store.addCurrentPostText.bind(props.Store)}
-                                                  addPost={props.Store.addPost.bind(props.Store)}
+                           render={() => <Profile
+                               profile={props.Store.getState().Profile}
+                               addCurrentPostText={props.Store.addCurrentPostText.bind(props.Store)}
+                               addPost={props.Store.addPost.bind(props.Store)}
                            />}>
                     </Route>
                     <Route
                         path="/dialogs"
                         render={() => <Dialogs
-                            message={props.Store._State.Message}
+                            message={props.Store.getState().Message}
                         />}>
                     </Route>
                     <Route path="/music"
