@@ -4,31 +4,21 @@ import {NavLink} from "react-router-dom";
 export function Nav() {
     return (
         <div className={style.nav}>
-            <div>
                 <NavLink
                     to="/profile"
-                    className="item">Profile</NavLink>
-            </div>
-            <div>
+                    className={style.item}>Profile</NavLink>
                 <NavLink
                     to="/dialogs"
-                    className="item">Messages</NavLink>
-            </div>
-            <div>
+                    className={style.item}>Messages</NavLink>
                 <NavLink
                     to="/news"
-                    className="item">News</NavLink>
-            </div>
-            <div>
+                    className={style.item}>News</NavLink>
                 <NavLink
                     to="/music"
-                    className="item">Music</NavLink>
-            </div>
-            <div>
+                    className={style.item}>Music</NavLink>
                 <NavLink
                     to="/settings"
-                    className="item">Settings</NavLink>
-            </div>
+                    className={style.item}>Settings</NavLink>
         </div>
     )
 }
