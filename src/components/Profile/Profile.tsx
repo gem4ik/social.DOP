@@ -2,6 +2,7 @@ import style from "./Profile.module.css"
 import React, {FC} from "react";
 import {ProfileType} from "../Data/Store";
 import {Posts} from "./Posts/Posts";
+import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
 type ProfilePropsType = {
     profile: ProfileType
@@ -17,8 +18,8 @@ export const Profile: FC<ProfilePropsType> = (props) => {
     }
     return (
         <div>
-            <div> ava+description</div>
-            <div>
+            <ProfileInfo/>
+            <div className={style.postContainer}>
                 <div>Myposts</div>
                 <textarea
                     ref={newPostText}
@@ -27,8 +28,8 @@ export const Profile: FC<ProfilePropsType> = (props) => {
                     value={props.profile.newPostText}
                 ></textarea>
                 <button onClick={props.addPost} className={style.button}>add post</button>
-                <Posts profile={props.profile.posts}/>
             </div>
+                <Posts profile={props.profile.posts}/>
         </div>
     )
 }

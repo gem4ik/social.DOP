@@ -71,10 +71,12 @@ const Store: StoreType = {
         this.renderTree()
     },
     addPost() {
-        let newPost = {id: v1(), post: this._State.Profile.newPostText, likeValue: 0}
-        this._State.Profile.posts.push(newPost)
+        if (this._State.Profile.newPostText !== '') {
+            let newPost = {id: v1(), post: this._State.Profile.newPostText, likeValue: 0}
+            this._State.Profile.posts.push(newPost)
+            this._State.Profile.newPostText = ''
+        }
         this.renderTree()
-        console.log(this._State.Profile.posts)
     },
     renderTree(){
 
@@ -85,6 +87,7 @@ const Store: StoreType = {
     getState() {
         return this._State
     }
+
 }
 
 export default Store
