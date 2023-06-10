@@ -34,6 +34,8 @@ function App(props: AppPropsType) {
                         path="/dialogs"
                         render={() => <Dialogs
                             message={props.Store.getState().Message}
+                            addMessageText={props.Store.addMessageText.bind(props.Store)}
+                            addMessage={props.Store.addMessage.bind(props.Store)}
                         />}>
                     </Route>
                     <Route path="/music"

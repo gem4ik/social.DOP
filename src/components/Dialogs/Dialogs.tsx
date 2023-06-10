@@ -7,13 +7,19 @@ import {Message} from "./Message/Message";
 
 type DialogsPropsType = {
     message: MessageType
+    addMessage: () => void
+    addMessageText: (newMessageText: string) => void
 }
-export const Dialogs: FC<DialogsPropsType> = (message) => {
+export const Dialogs: FC<DialogsPropsType> = (props) => {
     return (
         <div className={style.dialogs}>
-            <Names dialogs={message.message.dialogs} />
-            <Message messages={message.message.messages} />
-            <Input />
+            <Names dialogs={props.message.dialogs} />
+            <Message messages={props.message.messages} />
+            <Input
+                value={props.message.newMessageText}
+                addMessageText={props.addMessageText}
+                addMessage={props.addMessage}
+            />
         </div>
     )
 }

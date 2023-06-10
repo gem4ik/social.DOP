@@ -1,72 +1,74 @@
 import {v1} from "uuid";
 
-export type Poststype ={
+export type Poststype = {
     id: string
-    post:string
-    likeValue:number
+    post: string
+    likeValue: number
 }
 export type ProfileType = {
     posts: Array<Poststype>
     newPostText: string
 }
-export type DialogsType= {
-    id:number
-    name:string
+export type DialogsType = {
+    id: string
+    name: string
 }
-export type MessagesType= {
-    id:number
-    message:string
+export type MessagesType = {
+    id: string
+    message: string
 }
-export type MessageType= {
+export type MessageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
     newMessageText: string
 }
-export type StateType= {
-    Profile:ProfileType
-    Message:MessageType
+export type StateType = {
+    Profile: ProfileType
+    Message: MessageType
 }
-export type StoreType= {
+export type StoreType = {
     _State: StateType
-    addCurrentPostText: (newPostText: string)=>void
-    addPost: ()=>void
-    renderTree: ()=>void
-    subscribe: (callback: ()=>void) => void
-    getState: ()=> StateType
+    addCurrentPostText: (newPostText: string) => void
+    addPost: () => void
+    renderTree: () => void
+    subscribe: (callback: () => void) => void
+    getState: () => StateType
+    addMessageText: (newMessageText: string)=> void
+    addMessage: ()=> void
 }
 
 const Store: StoreType = {
     _State: {
-    Profile: {
-        posts: [
-            { id: v1(), post: 'Hello, World', likeValue: 8 },
-            { id: v1(), post: "It's my first post", likeValue: 4 },
-            { id: v1(), post: "It's my first post", likeValue: 7 }
-        ],
-        newPostText: ''
+        Profile: {
+            posts: [
+                {id: v1(), post: 'Hello, World', likeValue: 8},
+                {id: v1(), post: "It's my first post", likeValue: 4},
+                {id: v1(), post: "It's my first post", likeValue: 7}
+            ],
+            newPostText: ''
+        },
+        Message: {
+            dialogs: [
+                {id: v1(), name: 'Kseniya'},
+                {id: v1(), name: 'Gleb'},
+                {id: v1(), name: 'Vlad'},
+                {id: v1(), name: 'Misha'},
+                {id: v1(), name: 'Kostya'},
+                {id: v1(), name: 'Vova'},
+            ],
+            messages: [
+                {id: v1(), message: 'I'},
+                {id: v1(), message: "don't"},
+                {id: v1(), message: 'even'},
+                {id: v1(), message: 'know'},
+                {id: v1(), message: 'who'},
+                {id: v1(), message: 'i'},
+                {id: v1(), message: 'am'}
+            ],
+            newMessageText: ''
+        }
     },
-    Message: {
-        dialogs: [
-            { id: 1, name: 'Kseniya' },
-            { id: 2, name: 'Gleb' },
-            { id: 3, name: 'Vlad' },
-            { id: 4, name: 'Misha' },
-            { id: 5, name: 'Kostya' },
-            { id: 6, name: 'Vova' },
-        ],
-        messages: [
-            { id: 1, message: 'I' },
-            { id: 2, message: "don't" },
-            { id: 3, message: 'even' },
-            { id: 4, message: 'know' },
-            { id: 5, message: 'who' },
-            { id: 6, message: 'i' },
-            { id: 7, message: 'am' }
-        ],
-        newMessageText: ''
-    }
-},
-    addCurrentPostText(newPostText: string){
+    addCurrentPostText(newPostText: string) {
         this._State.Profile.newPostText = newPostText
         this.renderTree()
     },
@@ -78,16 +80,27 @@ const Store: StoreType = {
         }
         this.renderTree()
     },
-    renderTree(){
+    renderTree() {
 
     },
-    subscribe( callback){
+    subscribe(callback) {
         this.renderTree = callback
     },
     getState() {
         return this._State
-    }
-
+    },
+    addMessageText(newMessageText: string) {
+        this._State.Message.newMessageText = newMessageText
+        this.renderTree()
+    },
+    addMessage() {
+        if (this._State.Message.newMessageText !== '') {
+            let newMessage = {id: v1(), message: this._State.Message.newMessageText}
+            this._State.Message.messages.push(newMessage)
+            this._State.Message.newMessageText = ''
+        }
+        this.renderTree()
+    },
 }
 
 export default Store
