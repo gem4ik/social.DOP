@@ -1,35 +1,30 @@
 import style from "./Input.module.css"
-import React from "react";
+import React, {ChangeEvent} from "react";
+import {ActionTypes, addMessageAC, addMessageTextAC} from "../../Data/Store";
 
 export type InputPropsType = {
-    addMessageText: (newMessageText: string) => void
-    addMessage: () => void
     value: string
+    dispatch: (action: ActionTypes) => void
 }
 
 export const Input = (props: InputPropsType) => {
 
-    const newMessageText = React.createRef<HTMLTextAreaElement>()
-    const onChangeHandler = () => {
-        if (newMessageText.current?.value) {
-            props.addMessageText(newMessageText.current?.value)
+    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        if (e.currentTarget.value) {
+            props.dispatch(addMessageTextAC(e.currentTarget.value))
         }
     }
 
-    const onClickHandler = () => {
-        props.addMessage()
-    }
     return (
         <div className={style.inputArea}>
                 <textarea
                     value={props.value}
-                    onChange={onChangeHandler}
-                    ref={newMessageText}
+                    onChange={(e)=>{onChangeHandler(e)}}
                     className={style.textarea}
                           placeholder="your message">
             </textarea>
             <button
-                onClick={onClickHandler}
+                onClick={()=>{props.dispatch(addMessageAC())}}
                 className={style.button}>send</button>
         </div>
     )

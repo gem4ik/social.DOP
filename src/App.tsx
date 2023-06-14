@@ -26,16 +26,14 @@ function App(props: AppPropsType) {
                     <Route path="/profile"
                            render={() => <Profile
                                profile={props.Store.getState().Profile}
-                               addCurrentPostText={props.Store.addCurrentPostText.bind(props.Store)}
-                               addPost={props.Store.addPost.bind(props.Store)}
+                               dispatch={props.Store.dispatch.bind(props.Store)}
                            />}>
                     </Route>
                     <Route
                         path="/dialogs"
                         render={() => <Dialogs
                             message={props.Store.getState().Message}
-                            addMessageText={props.Store.addMessageText.bind(props.Store)}
-                            addMessage={props.Store.addMessage.bind(props.Store)}
+                            dispatch={props.Store.dispatch.bind(props.Store)}
                         />}>
                     </Route>
                     <Route path="/music"
