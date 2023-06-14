@@ -1,8 +1,9 @@
-import "./Music.css"
+import React from 'react';
 
-export function Music() {
+export const Music = () => {
     return (
-        <div className="music">
+        <div>
+           Music
         </div>
-    )
-}
+    );
+};

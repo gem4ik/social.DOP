@@ -1,52 +1,37 @@
 import React from 'react';
-import style from './App.module.css';
-import {Header} from "./components/Header/Header";
 import {Nav} from "./components/Nav/Nav";
-import {BrowserRouter, Route} from "react-router-dom";
-import {Music} from "./components/Music/Music";
-import {News} from "./components/News/News";
-import {Settings} from "./components/Settings/Settings";
-import {Dialogs} from "./components/Dialogs/Dialogs";
+import {Header} from "./components/Header/Header";
 import {Profile} from "./components/Profile/Profile";
-import {StoreType} from "./components/Data/Store";
+import {Dialogs} from "./components/Dialogs/Dialogs";
+import {Music} from "./components/Music/Music";
+import {Settings} from "./components/Settings/Settings";
+import s from './App.module.css'
+import {BrowserRouter, Route} from "react-router-dom";
+import {StoreType} from "./components/Types/Type";
 
-type AppPropsType = {
-    Store: StoreType
+export type AppPropsType ={
+    store: StoreType
 }
 
 function App(props: AppPropsType) {
     return (
         <BrowserRouter>
-            <div className={style.appWrapper}>
-                <div>
-                    <Header/>
-                    <Nav/>
-                </div>
-                <div className={style.content}>
-                    <Route path="/profile"
-                           render={() => <Profile
-                               profile={props.Store.getState().Profile}
-                               addCurrentPostText={props.Store.addCurrentPostText.bind(props.Store)}
-                               addPost={props.Store.addPost.bind(props.Store)}
-                           />}>
-                    </Route>
-                    <Route
-                        path="/dialogs"
-                        render={() => <Dialogs
-                            message={props.Store.getState().Message}
-                            addMessageText={props.Store.addMessageText.bind(props.Store)}
-                            addMessage={props.Store.addMessage.bind(props.Store)}
-                        />}>
-                    </Route>
-                    <Route path="/music"
-                           render={() => <Music/>}>
-                    </Route>
-                    <Route path="/news"
-                           render={() => <News/>}>
-                    </Route>
-                    <Route path="/settings"
-                           render={() => <Settings/>}>
-                    </Route>
+            <div className={s.appWrapper}>
+                <Header/>
+                <Nav/>
+                <div className={s.content}>
+                    <Route path="/profile" render={() => <Profile
+                        profile={props.store.State.Profile}
+                        changeInputPostValue={props.store.changeInputPostValue.bind(props.store)}
+                        addPost={props.store.addPost.bind(props.store)}
+                    />}></Route>
+                    <Route path='/dialogs' render={()=><Dialogs
+                        dialogs={props.store.State.Dialogs}
+                        changeInputMessageValue={props.store.changeInputMessageValue.bind(props.store)}
+                        addMessage={props.store.addMessage.bind(props.store)}
+                    />} ></Route>
+                    <Route path='/music' render={()=><Music/>} ></Route>
+                    <Route path='/settings' render={()=><Settings/>} ></Route>
                 </div>
             </div>
         </BrowserRouter>

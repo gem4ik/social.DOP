@@ -4,9 +4,10 @@
   grid-template-columns: 2fr 10fr;
   grid-template-areas:
   "h h"
-  "n c";
+  "n c"
 }
 .content {
   grid-area: c;
   height: auto;
+  border: 2px solid greenyellow;
 }
