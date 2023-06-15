@@ -4,7 +4,7 @@ import {Header} from "./components/Header/Header";
 import {Nav} from "./components/Nav/Nav";
 import {BrowserRouter, Route} from "react-router-dom";
 import {Music} from "./components/Music/Music";
-import {Friends} from "./components/News/Friends";
+import {Friends} from "./components/Friends/Friends";
 import {Settings} from "./components/Settings/Settings";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {Profile} from "./components/Profile/Profile";

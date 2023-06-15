@@ -8,7 +8,19 @@ export type FriendsPropsType = {
 export const Friends = (props: FriendsPropsType) => {
 
     return (
-        <div className='friends-wrapper'>
+        <div className='wrapper'>
+            <div className='AddFriendForm'>
+                <h3>Let's Add New Friends</h3>
+                <div className='inputForm'>
+                    <textarea className='textitem'
+                    ></textarea>
+                    <textarea className='textitem'
+                    ></textarea>
+                    <button className='button'>+</button>
+                </div>
+
+            </div>
+            <div className='friends-wrapper'>
             {props.friends.map(f=>{
                 return(
                     <div className="user-cards" key={f.id}>
@@ -19,6 +31,7 @@ export const Friends = (props: FriendsPropsType) => {
                     </div>
                 )
             })}
+            </div>
         </div>
     )
 }
