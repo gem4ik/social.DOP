@@ -1,26 +1,24 @@
-import React from 'react';
-import {DialogsType} from "../Types/Type";
-import {Messages} from "./Messages/Messages";
-import {Users} from "./Users/Users";
-import s from './Dialogs.module.css'
-import {AddMessageArea} from "./AddMessageArea/AddMessageArea";
+import style from "./Dialogs.module.css"
+import {DialogsType, MessagesType} from "../Data/Store";
+import {FC} from "react";
+import {Input} from "./Input/Input";
+import {Names} from "./Names/Names";
+import {Message} from "./Message/Message";
 
-export type DialogsPropsType = {
-    dialogs: DialogsType
-    changeInputMessageValue: (value: string)=> void
-    addMessage: ()=>void
+type DialogsPropsType = {
+    messages: MessagesType[]
+    addMessage: (value:string)=>void
+    users: DialogsType[]
 }
-
-export const Dialogs = (props: DialogsPropsType) => {
+export const Dialogs: FC<DialogsPropsType> = (props) => {
+    
     return (
-        <div className={s.dialogsWrapper}>
-            <Users users={props.dialogs.dialogs} />
-            <Messages messages={props.dialogs.messages} />
-            <AddMessageArea
-                inputValue={props.dialogs.messageValue}
-                changeInputMessageValue={props.changeInputMessageValue}
+        <div className={style.dialogs}>
+            <Names dialogs={props.users} />
+            <Message messages={props.messages} />
+            <Input
                 addMessage={props.addMessage}
             />
         </div>
-    );
-};
+    )
+}

@@ -1,0 +1,38 @@
+.messages {
+    grid-area: m;
+}
+.messageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 10px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    background-color: transparent;
+    border: 1px solid rgba(45, 45, 115, 0.58);
+    border-radius: 5px;
+}
+
+.messageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.messageSender {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.messageTime {
+    font-size: 0.8em;
+    color: #165296;
+}
+
+.messageBody {
+    font-size: 1em;
+}

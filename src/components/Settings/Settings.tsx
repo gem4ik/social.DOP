@@ -1,9 +1,8 @@
-import React from 'react';
+import "./Settings.css"
 
-export const Settings = () => {
+export function Settings() {
     return (
-            <div>
-                Settings
-            </div>
-    );
-};
+        <div className="Settings">
+        </div>
+    )
+}

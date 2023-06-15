@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {Store} from "./components/redux/state";
+import Store from "./components/Data/Store";
 
-const rerenderTree = () => {
+export const renderTree =()=> {
     ReactDOM.render(
-        <App store={Store}/>,
+        <App Store={Store} />,
         document.getElementById('root')
     );
 }
-
-rerenderTree()
-Store.subscribe(rerenderTree)
+renderTree()
+Store.subscribe(renderTree)
