@@ -64,7 +64,8 @@
     padding: 8px;
     border: 1px solid #e7e8ec;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 25px;
+    align-items: center;
     resize: none;
     margin-bottom: 0;
     background-color: transparent;

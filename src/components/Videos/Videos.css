@@ -1,0 +1,11 @@
+.video-like {
+    display: flex;
+}
+.video-like img {
+    cursor: pointer;
+}
+.marquee {
+    font-size: 40px;
+    color: #3d6aa8;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
